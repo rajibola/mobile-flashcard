@@ -1,12 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { DeckCard } from './src/components/deckCard';
+import { hp, wp } from './src/utils/layout';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <DeckCard />
+      <StatusBar style='auto' />
     </View>
   );
 }
