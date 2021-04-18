@@ -1,33 +1,70 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { Fragment } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { deckCardStyles as styles } from './styles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { wp } from '../utils/layout';
 import { Feather } from '@expo/vector-icons';
+import { colors } from '../constants/colors';
 
-export const DeckCard = () => {
+export const DeckCard = ({
+  backgroundColor,
+  title,
+  questionCount,
+  navigation,
+}) => {
+  const textColor =
+    backgroundColor() == colors.redOpacity()
+      ? colors.white
+      : backgroundColor() == colors.blueOpacity()
+      ? colors.white
+      : backgroundColor() == colors.yellowOpacity() && colors.blue;
+
+  const designColor =
+    backgroundColor() == colors.redOpacity()
+      ? colors.yellow
+      : backgroundColor() == colors.blueOpacity()
+      ? colors.yellow
+      : backgroundColor() == colors.yellowOpacity() && colors.blue;
+
   return (
-    <View style={styles.container}>
-      <View style={styles.smallCircle} />
-      <View style={styles.bigCircle} />
+    <TouchableOpacity
+      style={[styles.container, { backgroundColor: backgroundColor() }]}
+      onPress={() =>
+        navigation.navigate('Deck', {
+          backgroundColor: backgroundColor(),
+        })
+      }
+    >
+      <View style={[styles.smallCircle, { backgroundColor: designColor }]} />
+      <View style={[styles.bigCircle, { backgroundColor: designColor }]} />
       <MaterialCommunityIcons
         name='water'
         size={wp(18)}
-        style={styles.edgedCicle}
+        style={[styles.edgedCicle, { color: designColor }]}
       />
 
-      <Text style={styles.title}>JavaScript</Text>
-      <View style={[styles.row, styles.idContainer]}>
-        <Text style={styles.subtitle}>Identifier: </Text>
-        <View style={styles.image} />
-      </View>
-
-      <View style={styles.questionContainer}>
-        <Text style={styles.questionText}>15 questions</Text>
-        <View style={styles.rightBox}>
-          <Feather name='chevrons-right' size={24} color='black' />
+      <View>
+        <Text style={[styles.title, { color: textColor }]}>{title}</Text>
+        <View style={[styles.row, styles.idContainer]}>
+          <Text style={[styles.subtitle, { color: textColor }]}>
+            Contributors:{' '}
+          </Text>
+          <View style={styles.image} />
         </View>
       </View>
-    </View>
+
+      <View
+        style={[styles.questionContainer, { backgroundColor: designColor }]}
+      >
+        <Text style={[styles.questionText, { color: backgroundColor() }]}>
+          {questionCount} questions
+        </Text>
+        <View
+          style={[styles.rightBox, { backgroundColor: backgroundColor(0.5) }]}
+        >
+          <Feather name='chevrons-right' size={19} color={colors.white} />
+        </View>
+      </View>
+    </TouchableOpacity>
   );
 };

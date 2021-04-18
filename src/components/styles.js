@@ -1,36 +1,41 @@
 import { StyleSheet } from 'react-native';
 import { colors } from '../constants/colors';
+import { fonts } from '../constants/fonts';
 import { hp, wp } from '../utils/layout';
 
 export const deckCardStyles = StyleSheet.create({
   questionText: {
+    ...fonts[16],
     color: colors.red,
+    flex: 1,
+    textAlign: 'center',
   },
   rightBox: {
-    width: wp(30),
-    height: wp(30),
+    width: wp(35),
+    height: wp(35),
     alignSelf: 'baseline',
     backgroundColor: colors.redOpacity(0.5),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   questionContainer: {
-    width: wp(150),
-    height: wp(30),
+    width: wp(165),
+    height: wp(35),
     borderRadius: wp(10),
     backgroundColor: colors.yellow,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingLeft: wp(20),
     overflow: 'hidden',
-    marginTop: wp(20),
   },
   idContainer: {
     marginTop: wp(2),
+    marginBottom: hp(35),
   },
   image: {
-    width: wp(20),
-    height: wp(20),
-    borderRadius: wp(20),
+    width: wp(22),
+    height: wp(22),
+    borderRadius: wp(22),
     backgroundColor: colors.white,
   },
   row: {
@@ -38,12 +43,12 @@ export const deckCardStyles = StyleSheet.create({
     alignItems: 'center',
   },
   subtitle: {
-    color: colors.white,
-    fontSize: hp(14),
+    ...fonts[16],
+    color: colors.yellowOpacity(0.8),
   },
   title: {
+    ...fonts[24],
     color: colors.white,
-    fontSize: hp(20),
   },
   edgedCicle: {
     position: 'absolute',
@@ -71,13 +76,16 @@ export const deckCardStyles = StyleSheet.create({
     backgroundColor: colors.yellow,
   },
   container: {
-    width: wp(250),
-    height: hp(180),
+    width: wp(260),
+    minHeight: hp(180),
     borderRadius: wp(28),
     overflow: 'hidden',
     backgroundColor: colors.red,
     paddingLeft: wp(40),
-    paddingRight: wp(10),
-    paddingTop: wp(25),
+    paddingRight: wp(8),
+    paddingTop: wp(30),
+    paddingBottom: wp(30),
+    justifyContent: 'space-between',
+    marginBottom: hp(15),
   },
 });
