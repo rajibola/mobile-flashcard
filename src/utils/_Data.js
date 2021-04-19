@@ -1,8 +1,10 @@
 import { colors } from '../constants';
+import { wp } from './layout';
 
 export const Decks = {
   React: {
     title: 'React',
+    subtitle: 'Learn new JS framework',
     questions: [
       {
         question: 'What is React?',
@@ -17,6 +19,7 @@ export const Decks = {
   },
   JavaScript: {
     title: 'JavaScript',
+    subtitle: 'Learn new JS framework',
     questions: [
       {
         question: 'What is a closure?',
@@ -29,6 +32,7 @@ export const Decks = {
 
   React_Native: {
     title: 'React Native',
+    subtitle: 'Learn new JS framework',
     questions: [
       {
         question: 'What is React Native?',
@@ -37,4 +41,22 @@ export const Decks = {
     ],
     backgroundColor: colors.yellowOpacity,
   },
+};
+
+export const addDeckData = {
+  iconsConfig: { name: 'circle', size: wp(45) },
+  cards: [
+    {
+      color: colors.red,
+      setCardColor: colors.redOpacity,
+    },
+    {
+      color: colors.blue,
+      setCardColor: colors.blueOpacity,
+    },
+    {
+      color: colors.yellow,
+      setCardColor: colors.yellowOpacity,
+    },
+  ],
 };

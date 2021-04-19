@@ -12,6 +12,7 @@ export const DeckCard = ({
   title,
   questionCount,
   navigation,
+  subtitle,
   id,
 }) => {
   const textColor =
@@ -32,13 +33,16 @@ export const DeckCard = ({
     <TouchableOpacity
       style={[styles.container, { backgroundColor: backgroundColor() }]}
       onPress={() =>
-        navigation.navigate('Deck', {
-          backgroundColor: backgroundColor(),
-          title,
-          questionCount,
-          id,
-          textColor,
-        })
+        navigation
+          ? navigation.navigate('Deck', {
+              backgroundColor: backgroundColor(),
+              title,
+              questionCount,
+              id,
+              textColor,
+              subtitle,
+            })
+          : null
       }
     >
       <View style={[styles.smallCircle, { backgroundColor: designColor }]} />
@@ -55,9 +59,8 @@ export const DeckCard = ({
         </SharedElement>
         <View style={[styles.row, styles.idContainer]}>
           <Text style={[styles.subtitle, { color: textColor }]}>
-            Contributors:{' '}
+            {subtitle}
           </Text>
-          <View style={styles.image} />
         </View>
       </View>
 

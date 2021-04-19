@@ -65,26 +65,30 @@ export const Home = ({ navigation }) => {
             )}
           </TouchableOpacity>
         </View>
-
-        <AddDeck />
-
-        {/* <View>
-          {Object.keys(Decks).map((item, i) => {
-            const { title, questions, backgroundColor } = Decks[item];
-            return (
-              <SharedElement id={`item.${i}.background`} key={i}>
-                <DeckCard
-                  backgroundColor={backgroundColor}
-                  title={title}
-                  questionCount={questions.length}
-                  navigation={navigation}
-                  key={title}
-                  id={i}
-                />
-              </SharedElement>
-            );
-          })}
-        </View> */}
+        {optionTwo ? (
+          <AddDeck />
+        ) : (
+          <View>
+            {Object.keys(Decks).map((item, i) => {
+              const { title, questions, backgroundColor, subtitle } = Decks[
+                item
+              ];
+              return (
+                <SharedElement id={`item.${i}.background`} key={i}>
+                  <DeckCard
+                    backgroundColor={backgroundColor}
+                    title={title}
+                    subtitle={subtitle}
+                    questionCount={questions.length}
+                    navigation={navigation}
+                    key={title}
+                    id={i}
+                  />
+                </SharedElement>
+              );
+            })}
+          </View>
+        )}
       </View>
     </View>
   );

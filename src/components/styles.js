@@ -3,6 +3,50 @@ import { colors } from '../constants/colors';
 import { fonts } from '../constants/fonts';
 import { hp, wp } from '../utils/layout';
 
+export const addDeckStyles = StyleSheet.create({
+  pickColorText: {
+    ...fonts[16],
+    marginBottom: hp(5),
+    marginLeft: wp(15),
+    color: colors.blackOpacity(0.5),
+    backgroundColor: colors.white,
+    position: 'absolute',
+    top: -hp(10),
+  },
+  colorContainer: {
+    flexDirection: 'row',
+    borderWidth: 1,
+    borderRadius: wp(50),
+    borderColor: colors.blackOpacity(0.2),
+    flexShrink: 1,
+    paddingHorizontal: wp(4),
+    paddingVertical: hp(4),
+    width: wp(150),
+    marginTop: hp(10),
+    justifyContent: 'space-between',
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: colors.blackOpacity(0.2),
+    paddingHorizontal: wp(10),
+    ...fonts[16],
+    borderRadius: wp(40),
+    paddingTop: 0,
+    paddingBottom: 0,
+    color: colors.black,
+    marginBottom: hp(10),
+    height: hp(45),
+  },
+  container: {
+    borderWidth: 1,
+    borderColor: colors.blackOpacity(0.2),
+    padding: wp(10),
+    borderRadius: wp(35),
+    marginLeft: wp(30),
+    width: wp(282),
+  },
+});
+
 export const buttonStyles = StyleSheet.create({
   secondaryText: {
     color: colors.white,
@@ -21,7 +65,7 @@ export const buttonStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.red,
-    borderRadius: hp(15),
+    borderRadius: hp(30),
     width: wp(160),
     elevation: 2,
   },
