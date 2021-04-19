@@ -3,6 +3,30 @@ import { colors } from '../constants/colors';
 import { fonts } from '../constants/fonts';
 import { hp, wp } from '../utils/layout';
 
+export const buttonStyles = StyleSheet.create({
+  secondaryText: {
+    color: colors.white,
+  },
+  secondary: {
+    borderWidth: 1,
+    backgroundColor: 'transparent',
+    elevation: 0,
+  },
+  text: {
+    ...fonts[20],
+    color: colors.white,
+  },
+  container: {
+    height: hp(48),
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.red,
+    borderRadius: hp(15),
+    width: wp(160),
+    elevation: 2,
+  },
+});
+
 export const deckCardStyles = StyleSheet.create({
   questionText: {
     ...fonts[16],

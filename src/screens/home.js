@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { View, Text, Animated, TouchableOpacity, Easing } from 'react-native';
 import { DeckCard } from '../components/deckCard';
 import { colors } from '../constants/colors';
-import { wp, Deck } from '../utils';
+import { wp, Decks } from '../utils';
 import { homeStyles as styles } from './styles';
 import { SharedElement } from 'react-navigation-shared-element';
+import { AddDeck } from '../components/addDeck';
 
 export const Home = ({ navigation }) => {
   const [selected, select] = useState(0);
@@ -65,28 +66,25 @@ export const Home = ({ navigation }) => {
           </TouchableOpacity>
         </View>
 
-        <View>
-          <SharedElement id={`item.${1}.background`}>
-            <DeckCard
-              backgroundColor={colors.yellowOpacity}
-              title='HTML'
-              questionCount={34}
-              navigation={navigation}
-            />
-          </SharedElement>
+        <AddDeck />
 
-          {Object.keys(Deck).map((item, i) => {
-            const { title, questions, backgroundColor } = Deck[item];
+        {/* <View>
+          {Object.keys(Decks).map((item, i) => {
+            const { title, questions, backgroundColor } = Decks[item];
             return (
-              <DeckCard
-                backgroundColor={backgroundColor}
-                title={title}
-                questionCount={questions.length}
-                key={i}
-              />
+              <SharedElement id={`item.${i}.background`} key={i}>
+                <DeckCard
+                  backgroundColor={backgroundColor}
+                  title={title}
+                  questionCount={questions.length}
+                  navigation={navigation}
+                  key={title}
+                  id={i}
+                />
+              </SharedElement>
             );
           })}
-        </View>
+        </View> */}
       </View>
     </View>
   );

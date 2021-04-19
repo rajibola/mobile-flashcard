@@ -22,7 +22,7 @@ export const fonts = {
   },
   20: {
     fontSize: hp(20),
-    lineHeight: hp(24),
+    lineHeight: hp(26),
     fontFamily: 'Medium',
     color: colors.blue,
   },
@@ -41,7 +41,7 @@ export const fonts = {
 
   34: {
     fontSize: hp(34),
-    lineHeight: hp(36),
+    lineHeight: hp(40),
     fontFamily: 'Medium',
     color: colors.blue,
   },

@@ -5,12 +5,14 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { wp } from '../utils/layout';
 import { Feather } from '@expo/vector-icons';
 import { colors } from '../constants/colors';
+import { SharedElement } from 'react-navigation-shared-element';
 
 export const DeckCard = ({
   backgroundColor,
   title,
   questionCount,
   navigation,
+  id,
 }) => {
   const textColor =
     backgroundColor() == colors.redOpacity()
@@ -32,6 +34,10 @@ export const DeckCard = ({
       onPress={() =>
         navigation.navigate('Deck', {
           backgroundColor: backgroundColor(),
+          title,
+          questionCount,
+          id,
+          textColor,
         })
       }
     >
@@ -44,7 +50,9 @@ export const DeckCard = ({
       />
 
       <View>
-        <Text style={[styles.title, { color: textColor }]}>{title}</Text>
+        <SharedElement id={`item.${id}.title`}>
+          <Text style={[styles.title, { color: textColor }]}>{title}</Text>
+        </SharedElement>
         <View style={[styles.row, styles.idContainer]}>
           <Text style={[styles.subtitle, { color: textColor }]}>
             Contributors:{' '}

@@ -56,6 +56,45 @@ export const homeStyles = StyleSheet.create({
 });
 
 export const deckStyles = StyleSheet.create({
+  backButton: {
+    marginTop: hp(20),
+  },
+  cardText: {
+    ...fonts[20],
+    color: colors.red,
+    textAlign: 'center',
+  },
+  questionContainer: {
+    marginVertical: hp(20),
+    height: hp(450),
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.yellow,
+    width: wp(270),
+    alignSelf: 'center',
+    borderRadius: hp(20),
+  },
+  questions: {
+    ...fonts[34],
+    color: colors.red,
+    textAlign: 'center',
+    fontSize: hp(100),
+    lineHeight: hp(130),
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  title: {
+    ...fonts[34],
+    color: colors.white,
+    marginTop: hp(20),
+  },
+  topContainer: {
+    height: hp(300),
+    paddingHorizontal: wp(25),
+    paddingTop: paddingTopiOS,
+  },
   container: {
     flex: 1,
   },

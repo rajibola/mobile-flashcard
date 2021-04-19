@@ -1,6 +1,6 @@
 import { colors } from '../constants';
 
-export const Deck = {
+export const Decks = {
   React: {
     title: 'React',
     questions: [
@@ -25,5 +25,16 @@ export const Deck = {
       },
     ],
     backgroundColor: colors.blueOpacity,
+  },
+
+  React_Native: {
+    title: 'React Native',
+    questions: [
+      {
+        question: 'What is React Native?',
+        answer: 'React native is used to develop App for both mobile platform',
+      },
+    ],
+    backgroundColor: colors.yellowOpacity,
   },
 };
