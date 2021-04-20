@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { deckCardStyles as styles } from './styles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -15,27 +15,35 @@ export const DeckCard = ({
   subtitle,
   id,
 }) => {
+  const newColor =
+    backgroundColor == colors.yellow
+      ? colors.yellowOpacity
+      : backgroundColor == colors.blue
+      ? colors.blueOpacity
+      : backgroundColor == colors.red && colors.redOpacity;
+
+  console.log(newColor);
   const textColor =
-    backgroundColor() == colors.redOpacity()
+    newColor() == colors.redOpacity()
       ? colors.white
-      : backgroundColor() == colors.blueOpacity()
+      : newColor() == colors.blueOpacity()
       ? colors.white
-      : backgroundColor() == colors.yellowOpacity() && colors.blue;
+      : newColor() == colors.yellowOpacity() && colors.blue;
 
   const designColor =
-    backgroundColor() == colors.redOpacity()
+    newColor() == colors.redOpacity()
       ? colors.yellow
-      : backgroundColor() == colors.blueOpacity()
+      : newColor() == colors.blueOpacity()
       ? colors.yellow
-      : backgroundColor() == colors.yellowOpacity() && colors.blue;
+      : newColor() == colors.yellowOpacity() && colors.blue;
 
   return (
     <TouchableOpacity
-      style={[styles.container, { backgroundColor: backgroundColor() }]}
+      style={[styles.container, { backgroundColor: newColor() }]}
       onPress={() =>
         navigation
           ? navigation.navigate('Deck', {
-              backgroundColor: backgroundColor(),
+              backgroundColor: newColor(),
               title,
               questionCount,
               id,
@@ -54,7 +62,7 @@ export const DeckCard = ({
       />
 
       <View>
-        <SharedElement id={`item.${id}.title`}>
+        <SharedElement id={`item.${id + title}.title`}>
           <Text style={[styles.title, { color: textColor }]}>{title}</Text>
         </SharedElement>
         <View style={[styles.row, styles.idContainer]}>
@@ -67,12 +75,10 @@ export const DeckCard = ({
       <View
         style={[styles.questionContainer, { backgroundColor: designColor }]}
       >
-        <Text style={[styles.questionText, { color: backgroundColor() }]}>
+        <Text style={[styles.questionText, { color: newColor() }]}>
           {questionCount} questions
         </Text>
-        <View
-          style={[styles.rightBox, { backgroundColor: backgroundColor(0.5) }]}
-        >
+        <View style={[styles.rightBox, { backgroundColor: newColor(0.5) }]}>
           <Feather name='chevrons-right' size={19} color={colors.white} />
         </View>
       </View>

@@ -3,6 +3,16 @@ import { colors } from '../constants/colors';
 import { fonts } from '../constants/fonts';
 import { hp, wp } from '../utils/layout';
 
+export const circleStyle = StyleSheet.create({
+  container: {
+    width: wp(50),
+    height: wp(50),
+    borderRadius: wp(50),
+    backgroundColor: colors.yellow,
+    position: 'absolute',
+  },
+});
+
 export const addDeckStyles = StyleSheet.create({
   pickColorText: {
     ...fonts[16],
@@ -49,9 +59,10 @@ export const addDeckStyles = StyleSheet.create({
 
 export const buttonStyles = StyleSheet.create({
   secondaryText: {
-    color: colors.white,
+    color: colors.red,
   },
   secondary: {
+    borderColor: colors.redOpacity(0.7),
     borderWidth: 1,
     backgroundColor: 'transparent',
     elevation: 0,
@@ -66,7 +77,7 @@ export const buttonStyles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.red,
     borderRadius: hp(30),
-    width: wp(160),
+    minWidth: wp(120),
     elevation: 2,
   },
 });

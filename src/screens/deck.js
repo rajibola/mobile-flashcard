@@ -1,64 +1,99 @@
-import { SimpleLineIcons } from '@expo/vector-icons';
-import React, { useState, useEffect } from 'react';
-import { Text, View, Animated, Easing } from 'react-native';
+import { MaterialIcons, SimpleLineIcons } from '@expo/vector-icons';
+import React, { useEffect, useState, useContext } from 'react';
+import { Animated, Text, View } from 'react-native';
 import { SharedElement } from 'react-navigation-shared-element';
-import { Button } from '../components';
-import { hp, wp } from '../utils';
+import { Button, Circle } from '../components';
+import { colors } from '../constants';
+import { removeDeck } from '../context/actions';
+import { AppContext } from '../context/context';
+import {
+  hp,
+  wp,
+  circleData,
+  removeDeck as removeDeckFromStore,
+} from '../utils';
 import { deckStyles as styles } from './styles';
 
 export const Deck = ({ route, navigation }) => {
-  var [length, changeLength] = useState(new Animated.Value(20));
-  var [opacity, changeOpacity] = useState(new Animated.Value(0));
+  const {
+    title,
+    subtitle,
+    questionCount,
+    backgroundColor,
+    id,
+    textColor,
+  } = route.params;
 
-  useEffect(() => {
-    startAnimation();
-  });
+  const { state, dispatch } = useContext(AppContext);
 
-  const startAnimation = () => {
-    Animated.sequence([
-      Animated.timing(length, {
-        toValue: -hp(100),
-        duration: 800,
-        delay: 500,
-        useNativeDriver: false,
-      }).start(),
-
-      Animated.timing(opacity, {
-        toValue: 1,
-        duration: 700,
-        useNativeDriver: false,
-      }).start(),
-    ]);
+  const handleDeleteDeck = async () => {
+    await removeDeckFromStore(title);
+    await dispatch(removeDeck(title));
+    navigation.navigate('Home');
   };
 
-  const { title, questionCount, backgroundColor, id, textColor } = route.params;
+  const designColor =
+    backgroundColor == colors.redOpacity()
+      ? colors.yellow
+      : backgroundColor == colors.blueOpacity()
+      ? colors.yellow
+      : backgroundColor == colors.yellowOpacity() && colors.blue;
+
+  const countColor =
+    backgroundColor === colors.yellowOpacity() ? textColor : backgroundColor;
   return (
     <View style={styles.container}>
-      <SharedElement id={`item.${id}.background`}>
-        <View style={[styles.topContainer, { backgroundColor }]}>
-          <SimpleLineIcons
-            name='arrow-left'
-            size={wp(22)}
-            color={textColor}
-            onPress={() => navigation.goBack()}
-            style={styles.backButton}
-          />
-          <SharedElement id={`item.${id}.title`}>
-            <Text style={[styles.title, { color: textColor }]}>{title}</Text>
+      <SharedElement id={`item.${id + title}.background`}>
+        <View style={[styles.topContainer]}>
+          <View style={styles.header}>
+            <SimpleLineIcons
+              name='arrow-left'
+              size={wp(22)}
+              color={colors.blackOpacity(0.7)}
+              onPress={() => navigation.goBack()}
+              style={styles.backButton}
+            />
+            <MaterialIcons
+              name='delete'
+              size={24}
+              color={colors.blackOpacity(0.9)}
+              onPress={handleDeleteDeck}
+            />
+          </View>
+          <SharedElement id={`item.${id + title}.title`}>
+            <Text style={[styles.title]}>{title}</Text>
           </SharedElement>
+          <Text style={[styles.subtitle]}>{subtitle}</Text>
+
+          <View style={[styles.questionContainer, { backgroundColor }]}>
+            {circleData.map(({ size, position }, i) => (
+              <Circle
+                size={size}
+                color={designColor}
+                position={position}
+                key={i}
+              />
+            ))}
+            <Text style={[styles.questions, , { color: textColor }]}>
+              {questionCount}
+            </Text>
+            <Text style={[styles.cardText, { color: textColor }]}>Cards</Text>
+          </View>
+
+          <View style={[styles.row, styles.buttonContainer]}>
+            <Button
+              title={'Add Card'}
+              secondary
+              textStyle={{ color: countColor }}
+              containerStyle={{ borderColor: countColor }}
+            />
+            <Button
+              title={'Start Quiz'}
+              containerStyle={{ backgroundColor: countColor, elevation: 0 }}
+            />
+          </View>
         </View>
       </SharedElement>
-
-      <Animated.View
-        style={[styles.questionContainer, { marginTop: length, opacity }]}
-      >
-        <Text style={styles.questions}>{questionCount}</Text>
-        <Text style={styles.cardText}>card</Text>
-      </Animated.View>
-
-      <View style={[styles.row, { alignSelf: 'center' }]}>
-        <Button />
-      </View>
     </View>
   );
 };

@@ -3,6 +3,14 @@ import { colors, fonts } from '../constants';
 import { hp, paddingTopiOS, wp } from '../utils/layout';
 
 export const homeStyles = StyleSheet.create({
+  cardTotal: {
+    fontSize: hp(20),
+    fontFamily: 'Regular',
+    color: colors.blue,
+    alignSelf: 'center',
+    marginBottom: -hp(7),
+    marginTop: hp(7),
+  },
   line: {
     height: hp(4),
     alignSelf: 'center',
@@ -40,7 +48,6 @@ export const homeStyles = StyleSheet.create({
     ...fonts[20],
     fontFamily: 'Regular',
     color: colors.black,
-    marginBottom: hp(50),
   },
   header: {
     ...fonts[34],
@@ -56,23 +63,44 @@ export const homeStyles = StyleSheet.create({
 });
 
 export const deckStyles = StyleSheet.create({
-  backButton: {
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  buttonContainer: {
+    alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: wp(250),
     marginTop: hp(20),
   },
+  subtitle: {
+    ...fonts[16],
+    color: colors.black,
+    marginTop: hp(2),
+  },
+  backButton: {
+    marginTop: hp(20),
+    marginBottom: hp(10),
+  },
   cardText: {
-    ...fonts[20],
+    ...fonts[28],
     color: colors.red,
     textAlign: 'center',
+    fontFamily: 'Regular',
   },
   questionContainer: {
-    marginVertical: hp(20),
+    marginTop: hp(55),
     height: hp(450),
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.yellow,
+    backgroundColor: colors.white,
     width: wp(270),
     alignSelf: 'center',
     borderRadius: hp(20),
+    borderColor: colors.blackOpacity(0.3),
+    overflow: 'hidden',
   },
   questions: {
     ...fonts[34],
@@ -87,15 +115,17 @@ export const deckStyles = StyleSheet.create({
   },
   title: {
     ...fonts[34],
-    color: colors.white,
     marginTop: hp(20),
+    fontFamily: 'Regular',
+    color: colors.blackOpacity(0.9),
   },
   topContainer: {
-    height: hp(300),
+    height: '100%',
     paddingHorizontal: wp(25),
     paddingTop: paddingTopiOS,
   },
   container: {
     flex: 1,
+    backgroundColor: colors.white,
   },
 });
