@@ -8,16 +8,20 @@ import { createSharedElementStackNavigator } from 'react-navigation-shared-eleme
 import { StackNavigationOptions } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { Deck, Home } from './src/screens';
+import { AppContext, AppProvider } from './src/context/context';
+import { useContext } from 'react/cjs/react.production.min';
+import { handleInitialData } from './src/context/actions';
+import { useEffect } from 'react/cjs/react.development';
 
 const SharedConfig = (route) => {
-  const { id } = route.params;
+  const { id, title } = route.params;
   return [
     {
-      id: `item.${id}.background`,
+      id: `item.${id + title}.background`,
       animation: 'fade',
     },
     {
-      id: `item.${id}.title`,
+      id: `item.${id + title}.title`,
       animation: 'fade',
     },
   ];
@@ -45,15 +49,17 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={options}>
-        <Stack.Screen name='Home' component={Home} />
-        <Stack.Screen
-          name='Deck'
-          component={Deck}
-          sharedElementsConfig={SharedConfig}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <AppProvider>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={options}>
+          <Stack.Screen name='Home' component={Home} />
+          <Stack.Screen
+            name='Deck'
+            component={Deck}
+            sharedElementsConfig={SharedConfig}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </AppProvider>
   );
 }

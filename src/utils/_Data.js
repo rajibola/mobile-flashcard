@@ -1,3 +1,4 @@
+import { color } from 'react-native-reanimated';
 import { colors } from '../constants';
 import { wp } from './layout';
 
@@ -15,7 +16,7 @@ export const Decks = {
         answer: 'The componentDidMount lifecycle event',
       },
     ],
-    backgroundColor: colors.redOpacity,
+    backgroundColor: colors.red,
   },
   JavaScript: {
     title: 'JavaScript',
@@ -27,7 +28,7 @@ export const Decks = {
           'The combination of a function and the lexical environment within which that function was declared.',
       },
     ],
-    backgroundColor: colors.blueOpacity,
+    backgroundColor: colors.blue,
   },
 
   React_Native: {
@@ -39,7 +40,7 @@ export const Decks = {
         answer: 'React native is used to develop App for both mobile platform',
       },
     ],
-    backgroundColor: colors.yellowOpacity,
+    backgroundColor: colors.yellow,
   },
 };
 
@@ -48,15 +49,34 @@ export const addDeckData = {
   cards: [
     {
       color: colors.red,
-      setCardColor: colors.redOpacity,
+      setCardColor: colors.red,
     },
     {
       color: colors.blue,
-      setCardColor: colors.blueOpacity,
+      setCardColor: colors.blue,
     },
     {
       color: colors.yellow,
-      setCardColor: colors.yellowOpacity,
+      setCardColor: colors.yellow,
     },
   ],
 };
+
+export const circleData = [
+  {
+    size: 30,
+    position: { left: wp(20), top: wp(20) },
+  },
+  {
+    size: 200,
+    position: { right: -wp(80), top: -wp(80) },
+  },
+  {
+    size: 20,
+    position: { left: wp(40), bottom: wp(70) },
+  },
+  {
+    size: 60,
+    position: { right: wp(39), bottom: wp(20) },
+  },
+];

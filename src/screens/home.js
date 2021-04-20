@@ -1,14 +1,24 @@
-import React, { useState } from 'react';
-import { View, Text, Animated, TouchableOpacity, Easing } from 'react-native';
-import { DeckCard } from '../components/deckCard';
-import { colors } from '../constants/colors';
-import { wp, Decks } from '../utils';
-import { homeStyles as styles } from './styles';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import React, { memo, useContext, useEffect, useState } from 'react';
+import {
+  Animated,
+  Easing,
+  FlatList,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { SharedElement } from 'react-navigation-shared-element';
 import { AddDeck } from '../components/addDeck';
+import { DeckCard } from '../components/deckCard';
+import { colors } from '../constants';
+import { receiveDecks } from '../context/actions';
+import { AppContext } from '../context/context';
+import { getDecks, hp, wp } from '../utils';
+import { homeStyles as styles } from './styles';
 
-export const Home = ({ navigation }) => {
-  const [selected, select] = useState(0);
+export const Home = memo(({ navigation }) => {
+  const [selected, select] = useState(1);
   var [animatedWidth, changeWidth] = useState(new Animated.Value(0));
 
   let optionOne = selected === 1;
@@ -21,15 +31,60 @@ export const Home = ({ navigation }) => {
       toValue: wp(35),
       duration: 300,
       useNativeDriver: false,
+      delay: 200,
       easing: Easing.in,
     }).start();
   };
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Flashcards</Text>
-      <Text style={styles.subheader}>Pick a set to practice</Text>
+  const { state, dispatch } = useContext(AppContext);
+  useEffect(() => {
+    handleLeftSection();
+    handleInitialData();
+  }, []);
 
+  const handleInitialData = () => {
+    return getDecks().then((decks) => {
+      dispatch(receiveDecks(decks));
+    });
+  };
+
+  const _renderItem = ({ item }, i) => {
+    const { title, questions, backgroundColor, subtitle } = state[item];
+
+    return (
+      <SharedElement id={`item.${i + title}.background`} key={i}>
+        <DeckCard
+          backgroundColor={backgroundColor}
+          title={title}
+          subtitle={subtitle}
+          questionCount={questions.length}
+          navigation={navigation}
+          key={title}
+          id={i}
+        />
+      </SharedElement>
+    );
+  };
+
+  return (
+    <View style={[styles.container]}>
+      <View style={[styles.row, { marginBottom: hp(50) }]}>
+        <View>
+          <Text style={styles.header}>Flashcards</Text>
+          <Text style={styles.subheader}>Pick a set to practice</Text>
+        </View>
+
+        <View>
+          <Text style={styles.cardTotal}>
+            {state && Object.keys(state).length}
+          </Text>
+          <MaterialCommunityIcons
+            name='cards'
+            size={wp(30)}
+            color={colors.blackOpacity(0.7)}
+          />
+        </View>
+      </View>
       <View style={styles.row}>
         <View style={styles.leftContainer}>
           <TouchableOpacity
@@ -69,27 +124,18 @@ export const Home = ({ navigation }) => {
           <AddDeck />
         ) : (
           <View>
-            {Object.keys(Decks).map((item, i) => {
-              const { title, questions, backgroundColor, subtitle } = Decks[
-                item
-              ];
-              return (
-                <SharedElement id={`item.${i}.background`} key={i}>
-                  <DeckCard
-                    backgroundColor={backgroundColor}
-                    title={title}
-                    subtitle={subtitle}
-                    questionCount={questions.length}
-                    navigation={navigation}
-                    key={title}
-                    id={i}
-                  />
-                </SharedElement>
-              );
-            })}
+            {state && (
+              <FlatList
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={{ paddingBottom: hp(300) }}
+                keyExtractor={({ item }, i) => `${i}` + item}
+                data={Object.keys(state)}
+                renderItem={_renderItem}
+              />
+            )}
           </View>
         )}
       </View>
     </View>
   );
-};
+});
