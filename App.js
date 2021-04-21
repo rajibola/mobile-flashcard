@@ -7,7 +7,7 @@ import { customFonts } from './src/constants/fonts';
 import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
 import { StackNavigationOptions } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { Deck, Home } from './src/screens';
+import { Deck, Home, Quiz } from './src/screens';
 import { AppContext, AppProvider } from './src/context/context';
 import { useContext } from 'react/cjs/react.production.min';
 import { handleInitialData } from './src/context/actions';
@@ -58,6 +58,7 @@ export default function App() {
             component={Deck}
             sharedElementsConfig={SharedConfig}
           />
+          <Stack.Screen name='Quiz' component={Quiz} />
         </Stack.Navigator>
       </NavigationContainer>
     </AppProvider>

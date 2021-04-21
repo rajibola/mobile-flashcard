@@ -1,17 +1,12 @@
 import { MaterialIcons, SimpleLineIcons } from '@expo/vector-icons';
-import React, { useEffect, useState, useContext } from 'react';
-import { Animated, Text, View } from 'react-native';
+import React, { useContext } from 'react';
+import { Text, View } from 'react-native';
 import { SharedElement } from 'react-navigation-shared-element';
 import { Button, Circle } from '../components';
 import { colors } from '../constants';
 import { removeDeck } from '../context/actions';
 import { AppContext } from '../context/context';
-import {
-  hp,
-  wp,
-  circleData,
-  removeDeck as removeDeckFromStore,
-} from '../utils';
+import { circleData, removeDeck as removeDeckFromStore, wp } from '../utils';
 import { deckStyles as styles } from './styles';
 
 export const Deck = ({ route, navigation }) => {
@@ -90,6 +85,7 @@ export const Deck = ({ route, navigation }) => {
             <Button
               title={'Start Quiz'}
               containerStyle={{ backgroundColor: countColor, elevation: 0 }}
+              onPress={() => navigation.navigate('Quiz', { title })}
             />
           </View>
         </View>
