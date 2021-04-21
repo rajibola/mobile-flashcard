@@ -1,5 +1,4 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/core';
 import React, { useState, useContext } from 'react';
 import { KeyboardAvoidingView, Text, TextInput, View } from 'react-native';
 import { colors } from '../constants';

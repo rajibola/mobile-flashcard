@@ -70,7 +70,7 @@ export const Deck = ({ route, navigation }) => {
               />
             ))}
             <Text style={[styles.questions, , { color: textColor }]}>
-              {questionCount}
+              {state[title]?.questions.length}
             </Text>
             <Text style={[styles.cardText, { color: textColor }]}>Cards</Text>
           </View>
@@ -81,6 +81,7 @@ export const Deck = ({ route, navigation }) => {
               secondary
               textStyle={{ color: countColor }}
               containerStyle={{ borderColor: countColor }}
+              onPress={() => navigation.navigate('AddCard', { title })}
             />
             <Button
               title={'Start Quiz'}

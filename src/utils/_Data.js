@@ -30,18 +30,6 @@ export const Decks = {
     ],
     backgroundColor: colors.blue,
   },
-
-  React_Native: {
-    title: 'React Native',
-    subtitle: 'Learn new JS framework',
-    questions: [
-      {
-        question: 'What is React Native?',
-        answer: 'React native is used to develop App for both mobile platform',
-      },
-    ],
-    backgroundColor: colors.yellow,
-  },
 };
 
 export const addDeckData = {

@@ -2,6 +2,113 @@ import { StyleSheet } from 'react-native';
 import { colors, fonts } from '../constants';
 import { hp, paddingTopiOS, wp } from '../utils/layout';
 
+export const addCardStyles = StyleSheet.create({
+  cardText: {
+    textAlign: 'center',
+    ...fonts[20],
+    color: colors.black,
+    marginHorizontal: wp(15),
+  },
+  card: {
+    borderWidth: 0,
+    flex: 1,
+    width: wp(230),
+    alignSelf: 'center',
+    marginBottom: hp(20),
+  },
+  face: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: colors.blackOpacity(0.5),
+    borderRadius: wp(20),
+    overflow: 'hidden',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: wp(15),
+    paddingVertical: hp(15),
+    overflow: 'hidden',
+    backgroundColor: colors.black,
+
+    // height: hp(450),
+  },
+
+  back: {
+    borderWidth: 1,
+    borderRadius: wp(20),
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    overflow: 'hidden',
+  },
+  input: {
+    borderWidth: 1,
+    borderRadius: wp(20),
+    paddingHorizontal: wp(10),
+    marginBottom: hp(10),
+    borderColor: colors.blackOpacity(0.5),
+  },
+  addContainer: {
+    // borderWidth: 1,
+    width: wp(300),
+    height: hp(570),
+    borderRadius: hp(20),
+    alignSelf: 'center',
+    paddingHorizontal: wp(10),
+    paddingVertical: hp(15),
+  },
+  headerSubtitle: {
+    ...fonts[16],
+    color: colors.black,
+    marginTop: hp(2),
+  },
+  topHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: hp(20),
+  },
+  headerTitle: {
+    ...fonts[34],
+    marginTop: hp(8),
+    color: colors.black,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  header: {
+    paddingHorizontal: wp(25),
+    paddingBottom: hp(20),
+  },
+  container: {
+    flex: 1,
+    backgroundColor: colors.white,
+    paddingTop: paddingTopiOS,
+  },
+});
+
+export const quizStyles = StyleSheet.create({
+  card: {
+    borderWidth: 0,
+    flex: 1,
+    width: wp(230),
+    alignSelf: 'center',
+  },
+  face: {
+    flex: 1,
+    borderWidth: 1,
+    borderRadius: wp(30),
+    overflow: 'hidden',
+  },
+
+  back: {
+    borderWidth: 1,
+    borderRadius: wp(30),
+    backgroundColor: colors.yellow,
+    flex: 1,
+  },
+});
+
 export const homeStyles = StyleSheet.create({
   cardTotal: {
     fontSize: hp(20),

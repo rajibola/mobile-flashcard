@@ -12,6 +12,7 @@ import { AppContext, AppProvider } from './src/context/context';
 import { useContext } from 'react/cjs/react.production.min';
 import { handleInitialData } from './src/context/actions';
 import { useEffect } from 'react/cjs/react.development';
+import { AddCard } from './src/screens/addCard';
 
 const SharedConfig = (route) => {
   const { id, title } = route.params;
@@ -59,6 +60,7 @@ export default function App() {
             sharedElementsConfig={SharedConfig}
           />
           <Stack.Screen name='Quiz' component={Quiz} />
+          <Stack.Screen name='AddCard' component={AddCard} />
         </Stack.Navigator>
       </NavigationContainer>
     </AppProvider>
