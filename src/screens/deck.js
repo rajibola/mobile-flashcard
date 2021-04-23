@@ -10,14 +10,7 @@ import { circleData, removeDeck as removeDeckFromStore, wp } from '../utils';
 import { deckStyles as styles } from './styles';
 
 export const Deck = ({ route, navigation }) => {
-  const {
-    title,
-    subtitle,
-    questionCount,
-    backgroundColor,
-    id,
-    textColor,
-  } = route.params;
+  const { title, subtitle, backgroundColor, id, textColor } = route.params;
 
   const { state, dispatch } = useContext(AppContext);
 

@@ -11,37 +11,38 @@ export const customFonts = {
   Regular: require('../../assets/fonts/Poppins-Regular.ttf'),
   SemiBold: require('../../assets/fonts/Poppins-SemiBold.ttf'),
   Thin: require('../../assets/fonts/Poppins-Thin.ttf'),
+  PT: require('../../assets/fonts/PTSansNarrow-Regular.ttf'),
 };
 
 export const fonts = {
   16: {
     fontSize: hp(16),
-    lineHeight: hp(20),
+    // lineHeight: hp(20),
     fontFamily: 'Medium',
     color: colors.blue,
   },
   20: {
     fontSize: hp(20),
-    lineHeight: hp(26),
+    // lineHeight: hp(26),
     fontFamily: 'Medium',
     color: colors.blue,
   },
   24: {
     fontSize: hp(24),
-    lineHeight: hp(28),
+    // lineHeight: hp(28),
     fontFamily: 'Medium',
     color: colors.blue,
   },
   28: {
     fontSize: hp(28),
-    lineHeight: hp(30),
+    // lineHeight: hp(30),
     fontFamily: 'Medium',
     color: colors.blue,
   },
 
   34: {
     fontSize: hp(34),
-    lineHeight: hp(40),
+    // lineHeight: hp(40),
     fontFamily: 'Medium',
     color: colors.blue,
   },

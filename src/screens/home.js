@@ -9,12 +9,13 @@ import {
   View,
 } from 'react-native';
 import { SharedElement } from 'react-navigation-shared-element';
+import { Button } from '../components';
 import { AddDeck } from '../components/addDeck';
 import { DeckCard } from '../components/deckCard';
 import { colors } from '../constants';
-import { receiveDecks } from '../context/actions';
+import { receiveDecks, resetStore } from '../context/actions';
 import { AppContext } from '../context/context';
-import { getDecks, hp, wp } from '../utils';
+import { getDecks, hp, resetDecks, wp } from '../utils';
 import { homeStyles as styles } from './styles';
 
 export const Home = memo(({ navigation }) => {
@@ -46,6 +47,11 @@ export const Home = memo(({ navigation }) => {
     return getDecks().then((decks) => {
       dispatch(receiveDecks(decks));
     });
+  };
+
+  const handleResetDeck = async () => {
+    await resetDecks();
+    dispatch(resetStore());
   };
 
   const _renderItem = ({ item }, i) => {
@@ -127,7 +133,7 @@ export const Home = memo(({ navigation }) => {
             {state && (
               <FlatList
                 showsVerticalScrollIndicator={false}
-                contentContainerStyle={{ paddingBottom: hp(300) }}
+                contentContainerStyle={{ paddingBottom: hp(340) }}
                 keyExtractor={({ item }, i) => `${i}` + item}
                 data={Object.keys(state)}
                 renderItem={_renderItem}
@@ -136,6 +142,16 @@ export const Home = memo(({ navigation }) => {
           </View>
         )}
       </View>
+      <Button
+        title='Reset Deck'
+        containerStyle={{
+          position: 'absolute',
+          bottom: 0,
+          width: wp(375),
+          borderRadius: 0,
+        }}
+        onPress={handleResetDeck}
+      />
     </View>
   );
 });

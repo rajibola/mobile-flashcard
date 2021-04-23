@@ -70,7 +70,8 @@ export const addCardStyles = StyleSheet.create({
   headerTitle: {
     ...fonts[34],
     marginTop: hp(8),
-    color: colors.black,
+    color: colors.blackOpacity(0.7),
+    fontFamily: 'Regular',
   },
   row: {
     flexDirection: 'row',
@@ -88,24 +89,123 @@ export const addCardStyles = StyleSheet.create({
 });
 
 export const quizStyles = StyleSheet.create({
+  position: {
+    position: 'absolute',
+    zIndex: 1000,
+    fontFamily: 'Regular',
+    ...fonts[20],
+    top: 10,
+    right: 10,
+    color: colors.white,
+  },
+  percentage: {
+    borderWidth: 1,
+    alignItems: 'center',
+    width: 150,
+    height: 150,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    borderRadius: wp(150),
+    marginTop: hp(40),
+  },
+  circle: {
+    borderRadius: hp(1000),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  quizCompletedValue: {
+    textAlign: 'center',
+    alignSelf: 'center',
+    fontFamily: 'Regular',
+    fontSize: hp(40),
+    lineHeight: hp(55),
+    color: colors.blue,
+  },
+  quizCompleted: {
+    textAlign: 'center',
+    alignSelf: 'center',
+    ...fonts[34],
+    color: colors.blackOpacity(0.7),
+  },
+  line: {
+    backgroundColor: colors.black,
+    height: hp(1),
+    width: '100%',
+    position: 'absolute',
+  },
+
+  cardContainer: {
+    width: wp(300),
+    height: hp(470),
+    alignSelf: 'center',
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    width: '100%',
+    paddingHorizontal: wp(40),
+    alignSelf: 'center',
+    marginTop: hp(20),
+    // borderWidth: 1,
+  },
+  iconButton: {
+    // borderWidth: wp(1),
+    width: wp(65),
+    height: hp(55),
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: wp(20),
+    borderColor: colors.black,
+    backgroundColor: colors.white,
+  },
+
   card: {
     borderWidth: 0,
     flex: 1,
-    width: wp(230),
+
+    // width: wp(230),
     alignSelf: 'center',
+    textAlign: 'center',
+  },
+
+  answer: {
+    ...fonts[16],
+    color: colors.black,
+    textAlign: 'center',
+    fontFamily: 'PT',
+  },
+  question: {
+    ...fonts[16],
+    color: colors.white,
+    textAlign: 'center',
+    fontFamily: 'PT',
   },
   face: {
     flex: 1,
-    borderWidth: 1,
-    borderRadius: wp(30),
+    borderRadius: wp(2),
     overflow: 'hidden',
+    width: wp(270),
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: wp(15),
+    backgroundColor: colors.blue,
+    maxHeight: hp(470),
+    paddingHorizontal: wp(20),
+    elevation: 4,
   },
 
   back: {
-    borderWidth: 1,
-    borderRadius: wp(30),
-    backgroundColor: colors.yellow,
+    borderRadius: wp(2),
     flex: 1,
+    width: wp(270),
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: wp(15),
+    backgroundColor: colors.white,
+    maxHeight: hp(470),
+    paddingHorizontal: wp(20),
+    elevation: 4,
   },
 });
 
@@ -144,7 +244,7 @@ export const homeStyles = StyleSheet.create({
     height: hp(70),
     width: hp(400),
     marginRight: -wp(170),
-    marginLeft: -wp(135),
+    marginLeft: -wp(142),
     transform: [{ rotate: '270deg' }],
     flexDirection: 'row',
     justifyContent: 'flex-end',

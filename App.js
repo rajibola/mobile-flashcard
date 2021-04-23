@@ -1,17 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { useFonts } from 'expo-font';
-import { colors } from './src/constants/colors';
-import { customFonts } from './src/constants/fonts';
-import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
-import { StackNavigationOptions } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
+import { useFonts } from 'expo-font';
+import React from 'react';
+import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
+import { customFonts } from './src/constants/fonts';
+import { AppProvider } from './src/context/context';
 import { Deck, Home, Quiz } from './src/screens';
-import { AppContext, AppProvider } from './src/context/context';
-import { useContext } from 'react/cjs/react.production.min';
-import { handleInitialData } from './src/context/actions';
-import { useEffect } from 'react/cjs/react.development';
 import { AddCard } from './src/screens/addCard';
 
 const SharedConfig = (route) => {

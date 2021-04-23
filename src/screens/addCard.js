@@ -25,9 +25,10 @@ export const AddCard = ({ navigation, route }) => {
       await dispatch(addCardToDeck(title, card));
       setQuestion('');
       setAnswer('');
-      //   navigation.goBack()
     }
   };
+
+  const { backgroundColor, questions } = state[title];
 
   return (
     <ScrollView behavior='position' style={styles.container}>
@@ -50,12 +51,12 @@ export const AddCard = ({ navigation, route }) => {
             console.log('isFlipEnd', isFlipEnd);
           }}
         >
-          <View style={styles.face}>
+          <View style={[styles.face, { backgroundColor }]}>
             <Text style={[styles.cardText, { color: colors.white }]}>
               {question || 'Enter question'}
             </Text>
           </View>
-          <View style={styles.back}>
+          <View style={[styles.back, { borderColor: backgroundColor }]}>
             <Text style={[styles.cardText]}>{answer || 'Enter answer'}</Text>
           </View>
         </FlipCard>

@@ -1,4 +1,11 @@
-import { RECEIVE_DECKS, ADD_CARD, REMOVE_DECK, ADD_DECK } from './actions';
+import {
+  RECEIVE_DECKS,
+  ADD_CARD,
+  REMOVE_DECK,
+  ADD_DECK,
+  RESET_STORE,
+} from './actions';
+import { Decks as INITIAL_STATE } from '../utils/_Data';
 
 export const DeckReducer = (state = {}, action) => {
   switch (action.type) {
@@ -33,6 +40,9 @@ export const DeckReducer = (state = {}, action) => {
           questions: [...state[deckId].questions].concat(card),
         },
       };
+    case RESET_STORE:
+      console.log('working');
+      return INITIAL_STATE;
     default:
       return state;
   }
