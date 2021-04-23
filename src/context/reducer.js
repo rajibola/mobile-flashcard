@@ -28,7 +28,6 @@ export const DeckReducer = (state = {}, action) => {
     case REMOVE_DECK:
       const { id } = action;
       const { [id]: value, ...remainingDecks } = state;
-      console.log(remainingDecks);
       return remainingDecks;
 
     case ADD_CARD:
@@ -41,7 +40,6 @@ export const DeckReducer = (state = {}, action) => {
         },
       };
     case RESET_STORE:
-      console.log('working');
       return INITIAL_STATE;
     default:
       return state;

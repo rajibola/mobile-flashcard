@@ -47,9 +47,6 @@ export const AddCard = ({ navigation, route }) => {
           flipVertical={false}
           flip={false}
           clickable={true}
-          onFlipEnd={(isFlipEnd) => {
-            console.log('isFlipEnd', isFlipEnd);
-          }}
         >
           <View style={[styles.face, { backgroundColor }]}>
             <Text style={[styles.cardText, { color: colors.white }]}>

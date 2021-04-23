@@ -54,6 +54,7 @@ export const addDeckStyles = StyleSheet.create({
     borderRadius: wp(35),
     marginLeft: wp(30),
     width: wp(282),
+    flex: 1,
   },
 });
 

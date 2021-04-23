@@ -79,7 +79,11 @@ export const Deck = ({ route, navigation }) => {
             <Button
               title={'Start Quiz'}
               containerStyle={{ backgroundColor: countColor, elevation: 0 }}
-              onPress={() => navigation.navigate('Quiz', { title })}
+              onPress={() =>
+                state[title]?.questions.length
+                  ? navigation.navigate('Quiz', { title })
+                  : alert('Deck is empty!')
+              }
             />
           </View>
         </View>

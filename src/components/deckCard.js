@@ -22,7 +22,6 @@ export const DeckCard = ({
       ? colors.blueOpacity
       : backgroundColor == colors.red && colors.redOpacity;
 
-  console.log(newColor);
   const textColor =
     newColor() == colors.redOpacity()
       ? colors.white

@@ -142,16 +142,18 @@ export const Home = memo(({ navigation }) => {
           </View>
         )}
       </View>
-      <Button
-        title='Reset Deck'
-        containerStyle={{
-          position: 'absolute',
-          bottom: 0,
-          width: wp(375),
-          borderRadius: 0,
-        }}
-        onPress={handleResetDeck}
-      />
+      {optionOne && (
+        <Button
+          title='Reset Deck'
+          containerStyle={{
+            position: 'absolute',
+            bottom: 0,
+            width: wp(375),
+            borderRadius: 0,
+          }}
+          onPress={handleResetDeck}
+        />
+      )}
     </View>
   );
 });
