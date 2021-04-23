@@ -1,19 +1,25 @@
 import { Entypo, SimpleLineIcons } from '@expo/vector-icons';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { View, Text, TextInput, ScrollView } from 'react-native';
 import FlipCard from 'react-native-flip-card';
 import { Button } from '../components';
 import { colors } from '../constants';
 import { addCardToDeck } from '../context/actions';
 import { AppContext } from '../context/context';
-import { addCardToDeck as addToDeck, wp } from '../utils';
+import { addCardToDeck as addToDeck, changeSize, hp, wp } from '../utils';
 import { addCardStyles as styles } from './styles';
 
 export const AddCard = ({ navigation, route }) => {
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
+  const [textSize, setTextSize] = useState(hp(20));
+  const [flip, setFlip] = useState(false);
   const { state, dispatch } = useContext(AppContext);
   const { title } = route.params;
+
+  //   useEffect(()=>{
+
+  //   },[])
 
   const handleAddCardToDeck = async () => {
     if (question.trim() && answer.trim()) {
@@ -25,6 +31,10 @@ export const AddCard = ({ navigation, route }) => {
       await dispatch(addCardToDeck(title, card));
       setQuestion('');
       setAnswer('');
+
+      alert(`Successfully added "${question}" card to ${title}'s deck`);
+    } else {
+      alert('Please fill the text input field');
     }
   };
 
@@ -45,20 +55,45 @@ export const AddCard = ({ navigation, route }) => {
           perspective={1000}
           flipHorizontal={true}
           flipVertical={false}
-          flip={false}
-          clickable={true}
+          flip={flip}
+          clickable={false}
         >
           <View style={[styles.face, { backgroundColor }]}>
-            <Text style={[styles.cardText, { color: colors.white }]}>
+            <Text
+              style={[
+                styles.cardText,
+                {
+                  color: colors.white,
+                  fontSize: question ? changeSize(question.length) : hp(20),
+                },
+              ]}
+            >
               {question || 'Enter question'}
             </Text>
           </View>
           <View style={[styles.back, { borderColor: backgroundColor }]}>
-            <Text style={[styles.cardText]}>{answer || 'Enter answer'}</Text>
+            <Text
+              style={[
+                styles.cardText,
+                { fontSize: question ? changeSize(question.length) : hp(20) },
+              ]}
+            >
+              {answer || 'Enter answer'}
+            </Text>
           </View>
         </FlipCard>
-        <Input placeholder='Enter Question' onChangeText={setQuestion} />
-        <Input placeholder='Enter Answer' onChangeText={setAnswer} />
+        <Input
+          placeholder='Enter Question'
+          onChangeText={setQuestion}
+          onFocus={() => setFlip(false)}
+          value={question}
+        />
+        <Input
+          placeholder='Enter Answer'
+          onChangeText={setAnswer}
+          onFocus={() => setFlip(true)}
+          value={answer}
+        />
 
         <Button title='Add' onPress={handleAddCardToDeck} />
       </View>
@@ -66,12 +101,13 @@ export const AddCard = ({ navigation, route }) => {
   );
 };
 
-export const Input = ({ placeholder, onChangeText }) => {
+export const Input = ({ placeholder, onChangeText, ...props }) => {
   return (
     <TextInput
       style={styles.input}
       placeholder={placeholder}
       onChangeText={onChangeText}
+      {...props}
     />
   );
 };

@@ -8,18 +8,19 @@ export const addCardStyles = StyleSheet.create({
     ...fonts[20],
     color: colors.black,
     marginHorizontal: wp(15),
+    fontFamily: 'PT',
   },
   card: {
     borderWidth: 0,
     flex: 1,
-    width: wp(230),
+    // width: wp(230),
     alignSelf: 'center',
     marginBottom: hp(20),
   },
   face: {
     flex: 1,
     borderWidth: 1,
-    borderColor: colors.blackOpacity(0.5),
+    borderColor: colors.blue,
     borderRadius: wp(20),
     overflow: 'hidden',
     justifyContent: 'center',
@@ -28,8 +29,7 @@ export const addCardStyles = StyleSheet.create({
     paddingVertical: hp(15),
     overflow: 'hidden',
     backgroundColor: colors.black,
-
-    // height: hp(450),
+    width: wp(275),
   },
 
   back: {
@@ -39,6 +39,7 @@ export const addCardStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     overflow: 'hidden',
+    width: wp(275),
   },
   input: {
     borderWidth: 1,
@@ -48,18 +49,19 @@ export const addCardStyles = StyleSheet.create({
     borderColor: colors.blackOpacity(0.5),
   },
   addContainer: {
-    // borderWidth: 1,
+    borderWidth: 1,
     width: wp(300),
     height: hp(570),
-    borderRadius: hp(20),
+    borderRadius: hp(35),
     alignSelf: 'center',
     paddingHorizontal: wp(10),
     paddingVertical: hp(15),
+    borderColor: colors.blackOpacity(0.3),
   },
   headerSubtitle: {
     ...fonts[16],
     color: colors.black,
-    marginTop: hp(2),
+    marginTop: hp(0.5),
   },
   topHeader: {
     flexDirection: 'row',
