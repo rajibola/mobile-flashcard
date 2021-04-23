@@ -1,11 +1,18 @@
 import { Ionicons } from '@expo/vector-icons';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Animated, Easing, Text, TouchableOpacity, View } from 'react-native';
 import FlipCard from 'react-native-flip-card';
 import { Button } from '../components';
 import { colors } from '../constants';
 import { AppContext } from '../context/context';
-import { changeSize, hp, paddingTopiOS, wp } from '../utils';
+import {
+  changeSize,
+  clearLocalNotification,
+  hp,
+  paddingTopiOS,
+  setLocalNotification,
+  wp,
+} from '../utils';
 import { Header } from './addCard';
 import { quizStyles as styles } from './styles';
 
@@ -20,19 +27,13 @@ export const Quiz = ({ navigation, route }) => {
   const [opacity, changeOpacity] = useState(new Animated.Value(0));
   const [flip, setFlip] = useState(false);
 
-  const percentage = (percent, total) => {
-    return ((percent / 100) * total).toFixed(0);
-  };
+  useEffect(() => {
+    clearLocalNotification().then(setLocalNotification);
+  }, []);
 
-  const totalSize = 150;
-  const getValueTotal = Math.floor(correct / count) * 100;
-  const size = percentage(getValueTotal, totalSize);
   const checkCompleted = () => {
     if (count == questions.length - 1) {
       setCompleted(true);
-
-      console.log('CORRECT', correct);
-      console.log('COUNT', count);
 
       Animated.loop(
         Animated.sequence([

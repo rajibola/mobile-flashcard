@@ -8,6 +8,7 @@ import { setLocalNotification } from './src/utils';
 export default function App() {
   useEffect(() => {
     setLocalNotification();
+    console.log('WORK');
   }, []);
   const [isLoaded] = useFonts(customFonts);
 
