@@ -66,8 +66,8 @@ export const Quiz = ({ navigation, route }) => {
     checkCompleted();
   };
   const handleIncorrect = () => {
-    setIncorrect((prev) => prev + 1);
-    setCount((prev) => prev + 1);
+    setIncorrect(incorrect + 1);
+    setCount(count + 1);
     setFlip(false);
     checkCompleted();
   };
