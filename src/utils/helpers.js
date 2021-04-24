@@ -3,6 +3,10 @@ import { AsyncStorage } from 'react-native';
 const NOTIFICATION_KEY = 'Flashcard:notifications';
 const CHANNEL_ID = 'DailyReminder';
 
+export const scorePercentage = (correct, count) => {
+  return Math.floor((correct / count) * 100);
+};
+
 export const changeSize = (length) => {
   if (length <= 50) {
     return 32;

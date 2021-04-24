@@ -91,6 +91,18 @@ export const addCardStyles = StyleSheet.create({
 });
 
 export const quizStyles = StyleSheet.create({
+  restartContainer: {
+    width: wp(80),
+    height: wp(80),
+    borderWidth: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: wp(80),
+    borderColor: colors.blackOpacity(0.7),
+    alignSelf: 'center',
+    marginTop: hp(50),
+    backgroundColor: colors.black,
+  },
   position: {
     position: 'absolute',
     zIndex: 1000,
@@ -109,6 +121,7 @@ export const quizStyles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: wp(150),
     marginTop: hp(40),
+    borderColor: colors.blue,
   },
   circle: {
     borderRadius: hp(1000),

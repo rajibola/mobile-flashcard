@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import React, { useContext, useState, useEffect } from 'react';
 import { Animated, Easing, Text, TouchableOpacity, View } from 'react-native';
 import FlipCard from 'react-native-flip-card';
@@ -10,6 +10,7 @@ import {
   clearLocalNotification,
   hp,
   paddingTopiOS,
+  scorePercentage,
   setLocalNotification,
   wp,
 } from '../utils';
@@ -20,6 +21,7 @@ export const Quiz = ({ navigation, route }) => {
   const { title } = route.params;
   const { state, dispatch } = useContext(AppContext);
   const { questions, subtitle } = state[title];
+
   const [count, setCount] = useState(0);
   const [correct, setCorrect] = useState(0);
   const [incorrect, setIncorrect] = useState(0);
@@ -67,6 +69,13 @@ export const Quiz = ({ navigation, route }) => {
     setFlip(false);
   };
 
+  const handleReset = async () => {
+    setCorrect(() => 0);
+    setIncorrect(() => 0);
+    setCount(() => 0);
+    setCompleted(false);
+  };
+
   const question = questions[count]?.question;
   const answer = questions[count]?.answer;
 
@@ -83,15 +92,44 @@ export const Quiz = ({ navigation, route }) => {
       {completed ? (
         <View>
           <Text style={styles.quizCompleted}>Quiz Completed</Text>
-          <Text style={styles.quizCompletedValue}>
+          <Text
+            style={[
+              styles.quizCompletedValue,
+              scorePercentage(correct, count) < 50 && { color: colors.red },
+            ]}
+          >
             {correct}/{count} correct
           </Text>
 
-          <View style={styles.percentage}>
-            <Animated.Text style={[styles.quizCompletedValue, { opacity }]}>
-              {Math.floor((correct / count) * 100)}%
+          <View
+            style={[
+              styles.percentage,
+              scorePercentage(correct, count) < 50 && {
+                borderColor: colors.red,
+              },
+            ]}
+          >
+            <Animated.Text
+              style={[
+                styles.quizCompletedValue,
+                { opacity },
+                scorePercentage(correct, count) < 50 && { color: colors.red },
+              ]}
+            >
+              {scorePercentage(correct, count)}%
             </Animated.Text>
           </View>
+
+          <TouchableOpacity
+            style={styles.restartContainer}
+            onPress={handleReset}
+          >
+            <MaterialCommunityIcons
+              name='restore'
+              size={wp(35)}
+              color={colors.white}
+            />
+          </TouchableOpacity>
         </View>
       ) : (
         <View>
