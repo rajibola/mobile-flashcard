@@ -1,11 +1,10 @@
-import React, { Fragment, useEffect } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { deckCardStyles as styles } from './styles';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { wp } from '../utils/layout';
-import { Feather } from '@expo/vector-icons';
-import { colors } from '../constants/colors';
+import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
+import React from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { SharedElement } from 'react-navigation-shared-element';
+import { colors } from '../constants/colors';
+import { wp } from '../utils/layout';
+import { deckCardStyles as styles } from './styles';
 
 export const DeckCard = ({
   backgroundColor,

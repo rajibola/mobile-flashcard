@@ -3,6 +3,56 @@ import { colors } from '../constants/colors';
 import { fonts } from '../constants/fonts';
 import { hp, wp } from '../utils/layout';
 
+export const iconButtonStyles = StyleSheet.create({
+  iconButton: {
+    width: wp(65),
+    height: hp(55),
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: wp(20),
+    borderColor: colors.black,
+    backgroundColor: colors.white,
+  },
+});
+
+export const inputStyles = StyleSheet.create({
+  input: {
+    borderWidth: 1,
+    borderRadius: wp(20),
+    paddingHorizontal: wp(10),
+    marginBottom: hp(10),
+    borderColor: colors.blackOpacity(0.5),
+  },
+});
+
+export const headerStyles = StyleSheet.create({
+  headerSubtitle: {
+    ...fonts[16],
+    color: colors.black,
+    marginTop: hp(0.5),
+  },
+  topHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: hp(20),
+  },
+  headerTitle: {
+    ...fonts[34],
+    marginTop: hp(8),
+    color: colors.blackOpacity(0.7),
+    fontFamily: 'Regular',
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  header: {
+    paddingHorizontal: wp(25),
+    paddingBottom: hp(20),
+  },
+});
+
 export const circleStyle = StyleSheet.create({
   container: {
     width: wp(50),

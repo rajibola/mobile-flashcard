@@ -1,12 +1,11 @@
-import { Entypo, SimpleLineIcons } from '@expo/vector-icons';
-import React, { useContext, useState, useEffect } from 'react';
-import { View, Text, TextInput, ScrollView } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { ScrollView, Text, View } from 'react-native';
 import FlipCard from 'react-native-flip-card';
-import { Button } from '../components';
+import { Button, Header, Input } from '../components';
 import { colors } from '../constants';
 import { addCardToDeck } from '../context/actions';
 import { AppContext } from '../context/context';
-import { addCardToDeck as addToDeck, changeSize, hp, wp } from '../utils';
+import { addCardToDeck as addToDeck, changeSize, hp } from '../utils';
 import { addCardStyles as styles } from './styles';
 
 export const AddCard = ({ navigation, route }) => {
@@ -17,16 +16,9 @@ export const AddCard = ({ navigation, route }) => {
   const { state, dispatch } = useContext(AppContext);
   const { title } = route.params;
 
-  //   useEffect(()=>{
-
-  //   },[])
-
   const handleAddCardToDeck = async () => {
     if (question.trim() && answer.trim()) {
-      const card = {
-        question,
-        answer,
-      };
+      const card = { question, answer };
       await addToDeck(title, card);
       await dispatch(addCardToDeck(title, card));
       setQuestion('');
@@ -98,43 +90,5 @@ export const AddCard = ({ navigation, route }) => {
         <Button title='Add' onPress={handleAddCardToDeck} />
       </View>
     </ScrollView>
-  );
-};
-
-export const Input = ({ placeholder, onChangeText, ...props }) => {
-  return (
-    <TextInput
-      style={styles.input}
-      placeholder={placeholder}
-      onChangeText={onChangeText}
-      {...props}
-    />
-  );
-};
-
-export const Header = ({ title, subtitle, navigation }) => {
-  return (
-    <View style={styles.header}>
-      <View style={styles.topHeader}>
-        <SimpleLineIcons
-          name='arrow-left'
-          size={wp(22)}
-          color={colors.blackOpacity(0.7)}
-          onPress={() => navigation.goBack()}
-          style={styles.backButton}
-        />
-
-        <Entypo
-          name='home'
-          size={wp(24)}
-          color={colors.blackOpacity(0.9)}
-          onPress={() => navigation.navigate('Home')}
-          style={styles.backButton}
-        />
-      </View>
-
-      <Text style={styles.headerTitle}>{title}</Text>
-      {subtitle && <Text style={styles.headerSubtitle}>{subtitle}</Text>}
-    </View>
   );
 };

@@ -41,13 +41,7 @@ export const addCardStyles = StyleSheet.create({
     overflow: 'hidden',
     width: wp(275),
   },
-  input: {
-    borderWidth: 1,
-    borderRadius: wp(20),
-    paddingHorizontal: wp(10),
-    marginBottom: hp(10),
-    borderColor: colors.blackOpacity(0.5),
-  },
+
   addContainer: {
     borderWidth: 1,
     width: wp(300),
@@ -58,31 +52,12 @@ export const addCardStyles = StyleSheet.create({
     paddingVertical: hp(15),
     borderColor: colors.blackOpacity(0.3),
   },
-  headerSubtitle: {
-    ...fonts[16],
-    color: colors.black,
-    marginTop: hp(0.5),
-  },
-  topHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingVertical: hp(20),
-  },
-  headerTitle: {
-    ...fonts[34],
-    marginTop: hp(8),
-    color: colors.blackOpacity(0.7),
-    fontFamily: 'Regular',
-  },
+
   row: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  header: {
-    paddingHorizontal: wp(25),
-    paddingBottom: hp(20),
-  },
+
   container: {
     flex: 1,
     backgroundColor: colors.white,
@@ -163,16 +138,6 @@ export const quizStyles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: hp(20),
     // borderWidth: 1,
-  },
-  iconButton: {
-    // borderWidth: wp(1),
-    width: wp(65),
-    height: hp(55),
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: wp(20),
-    borderColor: colors.black,
-    backgroundColor: colors.white,
   },
 
   card: {

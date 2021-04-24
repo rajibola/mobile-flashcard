@@ -29,6 +29,13 @@ export const Deck = ({ route, navigation }) => {
 
   const countColor =
     backgroundColor === colors.yellowOpacity() ? textColor : backgroundColor;
+
+  const handleStartQuiz = () => {
+    state[title]?.questions.length
+      ? navigation.navigate('Quiz', { title })
+      : alert('Deck is empty!');
+  };
+
   return (
     <View style={styles.container}>
       <SharedElement id={`item.${id + title}.background`}>
@@ -79,11 +86,7 @@ export const Deck = ({ route, navigation }) => {
             <Button
               title={'Start Quiz'}
               containerStyle={{ backgroundColor: countColor, elevation: 0 }}
-              onPress={() =>
-                state[title]?.questions.length
-                  ? navigation.navigate('Quiz', { title })
-                  : alert('Deck is empty!')
-              }
+              onPress={handleStartQuiz}
             />
           </View>
         </View>

@@ -9,9 +9,7 @@ import {
   View,
 } from 'react-native';
 import { SharedElement } from 'react-navigation-shared-element';
-import { Button } from '../components';
-import { AddDeck } from '../components/addDeck';
-import { DeckCard } from '../components/deckCard';
+import { Button, AddDeck, DeckCard } from '../components';
 import { colors } from '../constants';
 import { receiveDecks, resetStore } from '../context/actions';
 import { AppContext } from '../context/context';
@@ -127,7 +125,7 @@ export const Home = memo(({ navigation }) => {
           </TouchableOpacity>
         </View>
         {optionTwo ? (
-          <AddDeck />
+          <AddDeck onActive={() => setActive(false)} />
         ) : (
           <View>
             {state && (

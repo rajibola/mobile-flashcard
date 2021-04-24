@@ -1,18 +1,12 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import React, { useState, useContext } from 'react';
-import {
-  KeyboardAvoidingView,
-  ScrollView,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import React, { useContext, useState } from 'react';
+import { KeyboardAvoidingView, Text, TextInput, View } from 'react-native';
 import { colors } from '../constants';
 import { addDeck } from '../context/actions';
 import { AppContext } from '../context/context';
 import { addDeckData, hp, saveDeckTitle, wp } from '../utils';
 import { Button } from './button';
-import { DeckCard } from './deckCard';
+import { DeckCard } from './deck_card';
 import { addDeckStyles as styles } from './styles';
 
 export const AddDeck = () => {
@@ -20,7 +14,7 @@ export const AddDeck = () => {
   const [subtitle, setSubtitle] = useState('');
   const [color, setColor] = useState(colors.yellow);
 
-  const { state, dispatch } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
 
   const handleAddDeck = async () => {
     if (title && subtitle) {
@@ -31,7 +25,6 @@ export const AddDeck = () => {
   };
 
   return (
-    // <ScrollView>
     <KeyboardAvoidingView
       behavior='position'
       keyboardVerticalOffset={50}
@@ -82,6 +75,5 @@ export const AddDeck = () => {
         onPress={handleAddDeck}
       />
     </KeyboardAvoidingView>
-    // </ScrollView>
   );
 };
