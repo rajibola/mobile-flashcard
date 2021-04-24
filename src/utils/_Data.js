@@ -1,4 +1,3 @@
-import { color } from 'react-native-reanimated';
 import { colors } from '../constants';
 import { wp } from './layout';
 
@@ -18,14 +17,37 @@ export const Decks = {
     ],
     backgroundColor: colors.red,
   },
-  JavaScript: {
-    title: 'JavaScript',
-    subtitle: 'Learn new JS framework',
+  'سؤال وجواب': {
+    title: 'سؤال وجواب',
+    subtitle: 'من المتخصصين في اللغة',
     questions: [
       {
-        question: 'What is a closure?',
-        answer:
-          'The combination of a function and the lexical environment within which that function was declared.',
+        question: 'الحب',
+        answer: 'Love❤️',
+      },
+    ],
+    backgroundColor: colors.blue,
+  },
+
+  学中文: {
+    title: '学中文',
+    subtitle: '来自母语人士',
+    questions: [
+      {
+        question: '爱',
+        answer: 'Love❤️',
+      },
+    ],
+    backgroundColor: colors.yellow,
+  },
+
+  'प्रश्न और उत्तर': {
+    title: 'प्रश्न और उत्तर',
+    subtitle: 'देशी वक्ता से',
+    questions: [
+      {
+        question: 'माही माही',
+        answer: 'Love❤️',
       },
     ],
     backgroundColor: colors.blue,

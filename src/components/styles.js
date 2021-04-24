@@ -179,6 +179,7 @@ export const deckCardStyles = StyleSheet.create({
   title: {
     ...fonts[24],
     color: colors.white,
+    textAlign: 'left',
   },
   edgedCicle: {
     position: 'absolute',
