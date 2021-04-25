@@ -36,3 +36,7 @@ This will open Expo Developer Tools in the browser. You can then do one of the f
 Use your device to test:
 
 Scan the QR Code using the Expo Client app (Expo Client for Android & iOS) from an Android or iOS device.
+
+# Testing Platform
+
+Android
