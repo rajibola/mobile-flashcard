@@ -1,20 +1,13 @@
-import {
-  RECEIVE_DECKS,
-  ADD_CARD,
-  REMOVE_DECK,
-  ADD_DECK,
-  RESET_STORE,
-} from './actions';
 import { Decks as INITIAL_STATE } from '../utils/_Data';
 
 export const DeckReducer = (state = {}, action) => {
   switch (action.type) {
-    case RECEIVE_DECKS:
+    case 'RECEIVE_DECKS':
       return {
         ...state,
         ...action.decks,
       };
-    case ADD_DECK:
+    case 'ADD_DECK':
       const { title, subtitle, backgroundColor } = action;
       return {
         ...state,
@@ -25,12 +18,12 @@ export const DeckReducer = (state = {}, action) => {
           backgroundColor,
         },
       };
-    case REMOVE_DECK:
+    case 'REMOVE_DECK':
       const { id } = action;
       const { [id]: value, ...remainingDecks } = state;
       return remainingDecks;
 
-    case ADD_CARD:
+    case 'ADD_CARD':
       const { deckId, card } = action;
       return {
         ...state,
@@ -39,7 +32,7 @@ export const DeckReducer = (state = {}, action) => {
           questions: [...state[deckId].questions].concat(card),
         },
       };
-    case RESET_STORE:
+    case 'RESET_STORE':
       return INITIAL_STATE;
     default:
       return state;

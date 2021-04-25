@@ -1,23 +1,13 @@
-import { useContext } from 'react';
-import { getDecks } from '../utils';
-import { AppContext } from './context';
-
-export const RECEIVE_DECKS = 'RECEIVE_DECKS';
-export const ADD_DECK = 'ADD_DECK';
-export const REMOVE_DECK = 'REMOVE_DECK';
-export const ADD_CARD = 'ADD_CARD';
-export const RESET_STORE = 'RESET_STORE';
-
 export function receiveDecks(decks) {
   return {
-    type: RECEIVE_DECKS,
+    type: 'RECEIVE_DECKS',
     decks,
   };
 }
 
 export function addDeck(title, subtitle, backgroundColor) {
   return {
-    type: ADD_DECK,
+    type: 'ADD_DECK',
     title,
     subtitle,
     backgroundColor,
@@ -26,14 +16,14 @@ export function addDeck(title, subtitle, backgroundColor) {
 
 export function removeDeck(id) {
   return {
-    type: REMOVE_DECK,
+    type: 'REMOVE_DECK',
     id,
   };
 }
 
 export function addCardToDeck(id, card) {
   return {
-    type: ADD_CARD,
+    type: 'ADD_CARD',
     deckId: id,
     card,
   };
@@ -41,6 +31,6 @@ export function addCardToDeck(id, card) {
 
 export function resetStore() {
   return {
-    type: RESET_STORE,
+    type: 'RESET_STORE',
   };
 }
