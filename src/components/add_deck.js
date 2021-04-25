@@ -9,7 +9,7 @@ import { Button } from './button';
 import { DeckCard } from './deck_card';
 import { addDeckStyles as styles } from './styles';
 
-export const AddDeck = () => {
+export const AddDeck = ({ navigation }) => {
   const [title, setTitle] = useState('');
   const [subtitle, setSubtitle] = useState('');
   const [color, setColor] = useState(colors.yellow);
@@ -17,12 +17,31 @@ export const AddDeck = () => {
   const { dispatch } = useContext(AppContext);
 
   const handleAddDeck = async () => {
-    if (title && subtitle) {
+    if (title.trim() && subtitle.trim()) {
       await saveDeckTitle(title, subtitle, color);
       await dispatch(addDeck(title, subtitle, color));
-      alert(`Added ${title} to deck collections successfully!`);
+      navigation.navigate('Deck', {
+        title,
+        subtitle,
+        backgroundColor: newColor(),
+        textColor,
+      });
     } else alert('Please fill all inputs!');
   };
+
+  const newColor =
+    color == colors.yellow
+      ? colors.yellowOpacity
+      : color == colors.blue
+      ? colors.blueOpacity
+      : color == colors.red && colors.redOpacity;
+
+  const textColor =
+    newColor() == colors.redOpacity()
+      ? colors.white
+      : newColor() == colors.blueOpacity()
+      ? colors.white
+      : newColor() == colors.yellowOpacity() && colors.blue;
 
   return (
     <KeyboardAvoidingView

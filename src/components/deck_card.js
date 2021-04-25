@@ -12,7 +12,6 @@ export const DeckCard = ({
   questionCount,
   navigation,
   subtitle,
-  id,
 }) => {
   const newColor =
     backgroundColor == colors.yellow
@@ -44,7 +43,6 @@ export const DeckCard = ({
               backgroundColor: newColor(),
               title,
               questionCount,
-              id,
               textColor,
               subtitle,
             })
@@ -60,7 +58,7 @@ export const DeckCard = ({
       />
 
       <View>
-        <SharedElement id={`item.${id + title}.title`}>
+        <SharedElement id={`item.${title}.title`}>
           <Text style={[styles.title, { color: textColor }]}>{title}</Text>
         </SharedElement>
         <View style={[styles.row, styles.idContainer]}>

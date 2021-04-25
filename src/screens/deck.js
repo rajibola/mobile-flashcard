@@ -10,7 +10,7 @@ import { circleData, removeDeck as removeDeckFromStore, wp } from '../utils';
 import { deckStyles as styles } from './styles';
 
 export const Deck = ({ route, navigation }) => {
-  const { title, subtitle, backgroundColor, id, textColor } = route.params;
+  const { title, subtitle, backgroundColor, textColor } = route.params;
 
   const { state, dispatch } = useContext(AppContext);
 
@@ -38,7 +38,7 @@ export const Deck = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <SharedElement id={`item.${id + title}.background`}>
+      <SharedElement id={`item.${title}.background`}>
         <View style={[styles.topContainer]}>
           <View style={styles.header}>
             <SimpleLineIcons
@@ -55,7 +55,7 @@ export const Deck = ({ route, navigation }) => {
               onPress={handleDeleteDeck}
             />
           </View>
-          <SharedElement id={`item.${id + title}.title`}>
+          <SharedElement id={`item.${title}.title`}>
             <Text style={[styles.title]}>{title}</Text>
           </SharedElement>
           <Text style={[styles.subtitle]}>{subtitle}</Text>

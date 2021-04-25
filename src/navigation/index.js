@@ -7,11 +7,11 @@ const SharedConfig = (route) => {
   const { id, title } = route.params;
   return [
     {
-      id: `item.${id + title}.background`,
+      id: `item.${title}.background`,
       animation: 'fade',
     },
     {
-      id: `item.${id + title}.title`,
+      id: `item.${title}.title`,
       animation: 'fade',
     },
   ];

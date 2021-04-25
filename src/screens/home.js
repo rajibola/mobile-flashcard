@@ -56,7 +56,7 @@ export const Home = memo(({ navigation }) => {
     const { title, questions, backgroundColor, subtitle } = state[item];
 
     return (
-      <SharedElement id={`item.${i + title}.background`} key={i}>
+      <SharedElement id={`item.${title}.background`} key={i}>
         <DeckCard
           backgroundColor={backgroundColor}
           title={title}
@@ -64,7 +64,6 @@ export const Home = memo(({ navigation }) => {
           questionCount={questions.length}
           navigation={navigation}
           key={title}
-          id={i}
         />
       </SharedElement>
     );
@@ -125,7 +124,7 @@ export const Home = memo(({ navigation }) => {
           </TouchableOpacity>
         </View>
         {optionTwo ? (
-          <AddDeck onActive={() => setActive(false)} />
+          <AddDeck navigation={navigation} />
         ) : (
           <View>
             {state && (
