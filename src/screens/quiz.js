@@ -28,17 +28,10 @@ export const Quiz = ({ navigation, route }) => {
   const [opacity, changeOpacity] = useState(new Animated.Value(0));
   const [flip, setFlip] = useState(false);
 
-  useEffect(() => {
-    clearLocalNotification().then(setLocalNotification);
-  }, []);
-
-  // useEffect(() => {
-  //   console.log(correctAnswer);
-  // }, [correctAnswer]);
-
   const checkCompleted = () => {
     if (count == questions.length - 1) {
       setCompleted(true);
+      clearLocalNotification().then(setLocalNotification);
 
       Animated.loop(
         Animated.sequence([
