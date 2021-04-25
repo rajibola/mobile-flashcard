@@ -66,6 +66,13 @@ export const addCardStyles = StyleSheet.create({
 });
 
 export const quizStyles = StyleSheet.create({
+  backToDeck: {
+    bottom: 0,
+    position: 'absolute',
+    width: '100%',
+    borderRadius: 0,
+    elevation: 0,
+  },
   restartContainer: {
     width: wp(80),
     height: wp(80),

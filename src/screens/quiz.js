@@ -32,9 +32,9 @@ export const Quiz = ({ navigation, route }) => {
     clearLocalNotification().then(setLocalNotification);
   }, []);
 
-  useEffect(() => {
-    console.log(correctAnswer);
-  }, [correctAnswer]);
+  // useEffect(() => {
+  //   console.log(correctAnswer);
+  // }, [correctAnswer]);
 
   const checkCompleted = () => {
     if (count == questions.length - 1) {
@@ -93,7 +93,7 @@ export const Quiz = ({ navigation, route }) => {
       <Header title={title} subtitle={subtitle} navigation={navigation} />
 
       {completed ? (
-        <View>
+        <View style={{ flex: 1 }}>
           <Text style={styles.quizCompleted}>Quiz Completed</Text>
           <Text
             style={[
@@ -137,6 +137,12 @@ export const Quiz = ({ navigation, route }) => {
               color={colors.white}
             />
           </TouchableOpacity>
+
+          <Button
+            title='Back to Deck'
+            containerStyle={styles.backToDeck}
+            onPress={() => navigation.goBack()}
+          />
         </View>
       ) : (
         <View>
