@@ -38,28 +38,28 @@ export const Deck = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <SharedElement id={`item.${title}.background`}>
-        <View style={[styles.topContainer]}>
-          <View style={styles.header}>
-            <SimpleLineIcons
-              name='arrow-left'
-              size={wp(22)}
-              color={colors.blackOpacity(0.7)}
-              onPress={() => navigation.goBack()}
-              style={styles.backButton}
-            />
-            <MaterialIcons
-              name='delete'
-              size={24}
-              color={colors.blackOpacity(0.9)}
-              onPress={handleDeleteDeck}
-            />
-          </View>
-          <SharedElement id={`item.${title}.title`}>
-            <Text style={[styles.title]}>{title}</Text>
-          </SharedElement>
-          <Text style={[styles.subtitle]}>{subtitle}</Text>
+      <View style={[styles.topContainer]}>
+        <View style={styles.header}>
+          <SimpleLineIcons
+            name='arrow-left'
+            size={wp(22)}
+            color={colors.blackOpacity(0.7)}
+            onPress={() => navigation.goBack()}
+            style={styles.backButton}
+          />
+          <MaterialIcons
+            name='delete'
+            size={24}
+            color={colors.blackOpacity(0.9)}
+            onPress={handleDeleteDeck}
+          />
+        </View>
+        <SharedElement id={`item.${title}.title`}>
+          <Text style={[styles.title]}>{title}</Text>
+        </SharedElement>
+        <Text style={[styles.subtitle]}>{subtitle}</Text>
 
+        <SharedElement id={`item.${title}.background`}>
           <View style={[styles.questionContainer, { backgroundColor }]}>
             {circleData.map(({ size, position }, i) => (
               <Circle
@@ -74,23 +74,23 @@ export const Deck = ({ route, navigation }) => {
             </Text>
             <Text style={[styles.cardText, { color: textColor }]}>Cards</Text>
           </View>
+        </SharedElement>
 
-          <View style={[styles.row, styles.buttonContainer]}>
-            <Button
-              title={'Add Card'}
-              secondary
-              textStyle={{ color: countColor }}
-              containerStyle={{ borderColor: countColor }}
-              onPress={() => navigation.navigate('AddCard', { title })}
-            />
-            <Button
-              title={'Start Quiz'}
-              containerStyle={{ backgroundColor: countColor, elevation: 0 }}
-              onPress={handleStartQuiz}
-            />
-          </View>
+        <View style={[styles.row, styles.buttonContainer]}>
+          <Button
+            title={'Add Card'}
+            secondary
+            textStyle={{ color: countColor }}
+            containerStyle={{ borderColor: countColor }}
+            onPress={() => navigation.navigate('AddCard', { title })}
+          />
+          <Button
+            title={'Start Quiz'}
+            containerStyle={{ backgroundColor: countColor, elevation: 0 }}
+            onPress={handleStartQuiz}
+          />
         </View>
-      </SharedElement>
+      </View>
     </View>
   );
 };

@@ -148,9 +148,6 @@ export const Quiz = ({ navigation, route }) => {
               flipVertical={false}
               flip={flip}
               clickable={false}
-              onFlipEnd={(isFlipEnd) => {
-                console.log('isFlipEnd', isFlipEnd);
-              }}
             >
               <View style={styles.face}>
                 <Text
@@ -184,7 +181,7 @@ export const Quiz = ({ navigation, route }) => {
               onPress={handleIncorrect}
               color={colors.red}
             />
-            <Button title='Flip' onPress={() => setFlip(!flip)} />
+            <Button title='Flip' onPress={() => setFlip(!flip)} secondary />
             <IconButton
               name='checkmark'
               onPress={handleCorrect}

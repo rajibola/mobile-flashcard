@@ -21,7 +21,8 @@ export const inputStyles = StyleSheet.create({
     borderRadius: wp(20),
     paddingHorizontal: wp(10),
     marginBottom: hp(10),
-    borderColor: colors.blackOpacity(0.5),
+    borderColor: colors.blackOpacity(0.2),
+    height: hp(40),
   },
 });
 
@@ -64,6 +65,14 @@ export const circleStyle = StyleSheet.create({
 });
 
 export const addDeckStyles = StyleSheet.create({
+  submitButton: {
+    marginTop: hp(10),
+    width: wp(255),
+    elevation: 0,
+    marginBottom: hp(3),
+    alignSelf: 'center',
+    // width: '100%',
+  },
   pickColorText: {
     ...fonts[16],
     marginBottom: hp(5),
@@ -100,20 +109,21 @@ export const addDeckStyles = StyleSheet.create({
   container: {
     borderWidth: 1,
     borderColor: colors.blackOpacity(0.2),
-    padding: wp(10),
+    paddingVertical: wp(8),
     borderRadius: wp(35),
     marginLeft: wp(30),
     width: wp(282),
     flex: 1,
+    alignItems: 'center',
   },
 });
 
 export const buttonStyles = StyleSheet.create({
   secondaryText: {
-    color: colors.red,
+    color: colors.blackOpacity(0.8),
   },
   secondary: {
-    borderColor: colors.redOpacity(0.7),
+    borderColor: colors.blackOpacity(0.2),
     borderWidth: 1,
     backgroundColor: 'transparent',
     elevation: 0,

@@ -13,14 +13,12 @@ export const addCardStyles = StyleSheet.create({
   card: {
     borderWidth: 0,
     flex: 1,
-    // width: wp(230),
     alignSelf: 'center',
     marginBottom: hp(20),
   },
   face: {
     flex: 1,
-    borderWidth: 1,
-    borderColor: colors.blue,
+
     borderRadius: wp(20),
     overflow: 'hidden',
     justifyContent: 'center',
@@ -50,7 +48,7 @@ export const addCardStyles = StyleSheet.create({
     alignSelf: 'center',
     paddingHorizontal: wp(10),
     paddingVertical: hp(15),
-    borderColor: colors.blackOpacity(0.3),
+    borderColor: colors.blackOpacity(0.2),
   },
 
   row: {
@@ -285,7 +283,7 @@ export const deckStyles = StyleSheet.create({
     fontFamily: 'Regular',
   },
   questionContainer: {
-    marginTop: hp(55),
+    marginTop: hp(30),
     height: hp(450),
     justifyContent: 'center',
     alignItems: 'center',
@@ -295,6 +293,7 @@ export const deckStyles = StyleSheet.create({
     borderRadius: hp(20),
     borderColor: colors.blackOpacity(0.3),
     overflow: 'hidden',
+    marginBottom: hp(10),
   },
   questions: {
     ...fonts[34],

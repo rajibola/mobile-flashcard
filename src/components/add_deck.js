@@ -84,13 +84,7 @@ export const AddDeck = ({ navigation }) => {
       </View>
       <Button
         title='submit'
-        containerStyle={{
-          marginTop: hp(10),
-          width: wp(260),
-          elevation: 0,
-          marginBottom: hp(3),
-          alignSelf: 'center',
-        }}
+        containerStyle={styles.submitButton}
         onPress={handleAddDeck}
       />
     </KeyboardAvoidingView>
