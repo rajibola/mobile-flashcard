@@ -115,6 +115,7 @@ export const addDeckStyles = StyleSheet.create({
     width: wp(282),
     flex: 1,
     alignItems: 'center',
+    marginTop: hp(80),
   },
 });
 

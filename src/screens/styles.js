@@ -234,7 +234,7 @@ export const homeStyles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignSelf: 'baseline',
-    marginTop: hp(170),
+    marginTop: hp(210),
   },
   subheader: {
     ...fonts[20],

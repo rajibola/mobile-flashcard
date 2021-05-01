@@ -148,6 +148,7 @@ export const Quiz = ({ navigation, route }) => {
               flipVertical={false}
               flip={flip}
               clickable={false}
+              useNativeDriver={true}
             >
               <View style={styles.face}>
                 <Text
